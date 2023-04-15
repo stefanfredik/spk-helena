@@ -78,25 +78,6 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Jumlah Tanggungan</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p><?= $peserta['jumlah_tanggungan']; ?></p>
-                        </div>
-                    </div>
-
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label">No. Telepon</label>
-                        </div>
-                        <div class="col-md-8">
-                            <p><?= $peserta['telepon']; ?></p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
                             <label class="form-label">Alamat</label>
                         </div>
                         <div class="col-md-8">

@@ -76,30 +76,10 @@
 
                 <div class="row mb-1">
                     <div class="col-md-4">
-                        <label class="form-label">Jumlah Tanggungan</label>
-                    </div>
-                    <div class="col-md-8">
-                        <p><?= $siswa['jumlah_tanggungan'] ?></p>
-                    </div>
-                </div>
-
-
-                <div class="row mb-1">
-                    <div class="col-md-4">
                         <label class="form-label">ALamat</label>
                     </div>
                     <div class="col-md-8">
                         <p><?= $siswa['alamat'] ?></p>
-                    </div>
-                </div>
-
-
-                <div class="row mb-1">
-                    <div class="col-md-4">
-                        <label class="form-label">Telepon</label>
-                    </div>
-                    <div class="col-md-8">
-                        <p><?= $siswa['telepon'] ?></p>
                     </div>
                 </div>
             </div>
