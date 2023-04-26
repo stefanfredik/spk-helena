@@ -94,8 +94,8 @@ define('EVENT_PRIORITY_NORMAL', 100);
 define('EVENT_PRIORITY_HIGH', 10);
 
 // $config  = config("Config");
-const APP_NAME  = "SPK";
-const APP_DESC   = "Sistem Pengambilan Kep";
+const APP_NAME  = "SPK BSM";
+const APP_DESC   = "SISTEM PENDUKUNG KEPUTUSAN PENENTUAN PENERIMAAN BEASISWA BSM PADA SMP NEGERI 2 BOLENG MENGGUNAKAN METODE SAW DAN TOPSIS";
 const APP_VER   = "1.0.0";
 const LOGO_IMG = "assets/img/favicon.png";
-const APP_SLUG = "SPK APP";
+const APP_SLUG = "SPK BSM";
