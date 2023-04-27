@@ -102,9 +102,19 @@ class Datasiswa extends BaseController {
             return $this->failValidationErrors("Gagal mengupload data");
         }
 
-        $excelFile = IOFactory::load($this->request->getFile('excel_file')->getTempName());
-        $sheet = $excelFile->getActiveSheet();
-        $data = $sheet->toArray();
+        try {
+            $excelFile = IOFactory::load($this->request->getFile('excel_file')->getTempName());
+            $sheet = $excelFile->getActiveSheet();
+            $data = $sheet->toArray();
+        } catch (\Throwable $th) {
+            $res = [
+                'status' => 'error',
+                'msg'   => 'Data Gagal di Upload',
+            ];
+
+            return $this->respond($res, 500);
+        }
+
 
         $res = [
             'status' => 'success',
