@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\SiswaModel;
 use CodeIgniter\API\ResponseTrait;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class Datasiswa extends BaseController {
     use ResponseTrait;
@@ -23,7 +24,7 @@ class Datasiswa extends BaseController {
     public function index() {
 
         $data = [
-            'title' => 'Data Siswa',
+            'title' => 'Tabel Siswa',
             'meta'   => $this->meta,
             'meta'  => $this->meta
         ];
@@ -40,9 +41,18 @@ class Datasiswa extends BaseController {
         return view('/siswa/tambah', $data);
     }
 
+    public function upload() {
+        $data = [
+            'title' => 'Upload Data Siswa dari File Excel',
+            'meta'   => $this->meta
+        ];
+
+        return view('/siswa/upload', $data);
+    }
+
     public function table() {
         $data = [
-            'title' => 'Data Siswa',
+            'title' => 'Tabel Siswa',
             'meta'   => $this->meta,
             'dataSiswa' => $this->siswaModel->findAll(),
         ];
@@ -82,6 +92,24 @@ class Datasiswa extends BaseController {
             'status' => 'success',
             'msg'   => 'Data Siswa Berhasil Ditambahkan.',
             // 'data'  => $data
+        ];
+
+        return $this->respond($res, 200);
+    }
+
+    public function doupload() {
+        if (!$this->request->getFile('excel_file')->isValid()) {
+            return $this->failValidationErrors("Gagal mengupload data");
+        }
+
+        $excelFile = IOFactory::load($this->request->getFile('excel_file')->getTempName());
+        $sheet = $excelFile->getActiveSheet();
+        $data = $sheet->toArray();
+
+        $res = [
+            'status' => 'success',
+            'msg'   => 'Data Siswa Berhasil Di Upload.',
+            'data'  => $data
         ];
 
         return $this->respond($res, 200);

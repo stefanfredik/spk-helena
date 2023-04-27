@@ -82,15 +82,6 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Jumlah Tanggungan</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input value="<?= $siswa['jumlah_tanggungan'] ?>" name="jumlah_tanggungan" type="text" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
                             <label class="form-label">Alamat</label>
                         </div>
                         <div class="col-md-8">

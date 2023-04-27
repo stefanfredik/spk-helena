@@ -9,8 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
-class Filters extends BaseConfig
-{
+class Filters extends BaseConfig {
     /**
      * Configures aliases for Filter classes to
      * make reading things nicer and simpler.
@@ -38,7 +37,7 @@ class Filters extends BaseConfig
             // 'invalidchars',
         ],
         'after' => [
-            'toolbar',
+            // 'toolbar',
             // 'honeypot',
             // 'secureheaders',
         ],

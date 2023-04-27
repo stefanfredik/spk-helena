@@ -82,11 +82,13 @@ $routes->group('datasiswa', static function ($router) {
     $router->get('/', 'Datasiswa::index');
     $router->get('table', 'Datasiswa::table');
     $router->get('tambah', 'Datasiswa::tambah');
+    $router->get('upload', 'Datasiswa::upload');
     $router->get('(:num)', 'Datasiswa::edit/$1');
     $router->get('detail/(:num)', 'Datasiswa::detail/$1');
     $router->get('delete/(:num)', 'Datasiswa::delete/$1');
 
     $router->post('/', 'Datasiswa::store');
+    $router->post('upload', 'Datasiswa::doupload');
     $router->post("(:num)", "Datasiswa::update/$1");
 
     $router->delete("(:num)", "Datasiswa::delete/$1");
@@ -142,6 +144,12 @@ $routes->group('user', static function ($router) {
 $routes->get("perhitungan", 'Perhitungan::index');
 $routes->get("keputusan", 'Keputusan::index');
 $routes->get("laporan", 'Laporan::index');
+
+
+$routes->get("saw", 'Saw::index');
+
+$routes->get("upload", 'Upload::index');
+$routes->post("upload/process", "Upload::process");
 
 // coba
 

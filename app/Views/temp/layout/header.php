@@ -8,13 +8,13 @@
                     </h1>
                     <div class="page-header-subtitle"><?= @$meta['subtitle']; ?></div>
                 </div>
-                <div class="col-12 col-xl-auto mt-4">
+                <!-- <div class="col-12 col-xl-auto mt-4">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-outline-white">Left</button>
                         <button type="button" class="btn btn-outline-white">Middle</button>
                         <button type="button" class="btn btn-outline-white">Right</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -7,7 +7,9 @@
     <title><?= @$title . " | " . APP_NAME; ?></title>
     <link rel="icon" type="image/x-icon" href="<?= LOGO_IMG ?>" />
 
-    <?= $this->extend("temp/layout/sbstyles"); ?>
+    <?= $this->include("temp/layout/sbstyles"); ?>
+
+    <?= $this->include("temp/layout/customcss"); ?>
 
 
     <?= $this->renderSection("styles"); ?>

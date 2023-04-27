@@ -12,7 +12,7 @@ class User extends BaseController {
 
     var $meta = [
         'url'   => 'user',
-        'title' => 'User',
+        'title' => 'Data User',
         'subtitle' => 'Halaman User'
     ];
 
