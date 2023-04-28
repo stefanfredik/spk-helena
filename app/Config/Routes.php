@@ -140,7 +140,7 @@ $routes->group('user', static function ($router) {
 
 
 $routes->group('periode', static function ($router) {
-    $router->get('/', 'User::index');
+    $router->get('/', 'Periode::index');
     $router->get('table', 'User::table');
     $router->get('tambah', 'User::tambah');
     $router->get('(:num)', 'User::edit/$1');
@@ -161,6 +161,7 @@ $routes->get("laporan", 'Laporan::index');
 
 
 $routes->get("saw", 'Saw::index');
+$routes->get("topsis", 'Topsis::index');
 
 $routes->get("upload", 'Upload::index');
 $routes->post("upload/process", "Upload::process");

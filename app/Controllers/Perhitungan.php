@@ -3,14 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Libraries\Moora;
 use App\Models\KelayakanModel;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
-use App\Libraries\Moora;
+use App\Libraries\Saw;
+use App\Libraries\SawLib;
+use App\Libraries\TopsisLib;
 
-class Perhitungan extends BaseController {
+class Perhitungan extends BaseController
+{
     var $meta = [
         'url' => 'datasiswa',
         'title' => 'Data Siswa',
@@ -19,7 +23,8 @@ class Perhitungan extends BaseController {
 
     private $totalNilaiKriteria;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->kriteriaModel = new KriteriaModel();
         $this->siswaModel = new SiswaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
@@ -30,7 +35,8 @@ class Perhitungan extends BaseController {
     }
 
 
-    public function index() {
+    public function index()
+    {
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
@@ -42,17 +48,21 @@ class Perhitungan extends BaseController {
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
         // $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
-        $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
+        // $moora = new Moora($peserta, $kriteria, $subkriteria);
+        $saw = new SawLib($peserta, $kriteria, $subkriteria);
+        $topsis = new TopsisLib($peserta, $kriteria, $subkriteria);
+
+
+        // dd($peserta);
+        // dd($moora);
 
         $data = [
             'title' => 'Data Perhitungan dan Table Moora',
             'dataKriteria' => $this->kriteriaModel->findAll(),
-            'totalNilaiKriteria' => $this->totalNilaiKriteria,
-            'peserta' => $moora->getAllPeserta(),
-            'jumKriteriaBenefit' => $moora->jumKriteriaBenefit,
-            'jumKriteriaCost' => $moora->jumKriteriaCost,
+            'sawPeserta' => $saw->getAllPeserta(),
+            'topsisPeserta' => $topsis->getAllPeserta(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
-            'bobotKriteria' => $moora->bobotKriteria
+            'bobotKriteria' => $saw->bobotKriteria
         ];
 
         return view('/perhitungan/index', $data);

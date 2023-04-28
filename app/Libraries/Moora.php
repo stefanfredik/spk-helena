@@ -24,7 +24,6 @@ class Moora
         public array $dataPeserta,
         public array $dataKriteria,
         public array $dataSubkriteria,
-        public array $nilaiKelayakan
     ) {
         $this->setBobotKriteria();
         $this->insertKriteria();
@@ -170,50 +169,6 @@ class Moora
         // Nilai ke array
         foreach ($this->peserta as $i => $ps) {
             $this->peserta[$i]['kriteria_nilai'] = ($ps['kriteria_max'] + $ps['kriteria_min']);
-        }
-
-        // Kelayakan
-        $status = "";
-        // foreach ($this->peserta as $i => $ps) {
-        //     $n = (float)$ps['kriteria_nilai'];
-        //     $max = 0;
-
-        //     foreach ($this->nilaiKelayakan as $kl) {
-        //         if ($n >= $kl['nilai'] && $kl['nilai'] >= $max) {
-        //             $max = $kl['nilai'];
-        //             $status = $kl['keterangan'];
-        //         }
-        //     }
-
-        //     $this->peserta[$i]['status_layak'] = $status;
-        // }
-
-
-        foreach ($this->nilaiKelayakan as $kl) {
-            if ($kl['keterangan'] == 'Layak') {
-                $c1 = $kl['nilai'];
-            }
-
-            if ($kl['keterangan'] == 'Cukup Layak') {
-                $c2 = $kl['nilai'];
-            }
-
-            if ($kl['keterangan'] == 'Tidak Layak') {
-                $c3 = $kl['nilai'];
-            }
-        }
-
-        foreach ($this->peserta as $i => $ps) {
-            $nilai = $ps['kriteria_nilai'];
-            if ($nilai >= $c1) {
-                $status = 'Layak';
-            } else if ($nilai >= $c2 && $nilai < $c1) {
-                $status = 'Cukup Layak';
-            } else {
-                $status = 'Tidak Layak';
-            }
-
-            $this->peserta[$i]['status_layak'] = $status;
         }
     }
 
