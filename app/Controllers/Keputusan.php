@@ -4,20 +4,24 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Libraries\Moora;
+use App\Libraries\SawLib;
+use App\Libraries\TopsisLib;
 use App\Models\KelayakanModel;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
 
-class Keputusan extends BaseController {
+class Keputusan extends BaseController
+{
     var $meta = [
         'url' => 'keputusan',
         'title' => 'Data Keputusan',
         'subtitle' => 'Halaman Keputusan'
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->kriteriaModel = new KriteriaModel();
         $this->siswaModel = new SiswaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
@@ -27,7 +31,8 @@ class Keputusan extends BaseController {
         // $this->keputusanModel = new KeputusanBltModel();
     }
 
-    public function index() {
+    public function index()
+    {
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
@@ -37,15 +42,19 @@ class Keputusan extends BaseController {
         $check = checkdata($peserta, $kriteria, $subkriteria, $kelayakan);
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
-        $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
+        $saw = new SawLib($peserta, $kriteria, $subkriteria);
+        $topsis = new TopsisLib($peserta, $kriteria, $subkriteria);
 
+        $saw->sortPeserta();
+        $topsis->sortPeserta();
 
 
 
         $data = [
             'title'         => 'Data Perhitungan dan Table Moora',
             'url'           => $this->meta['url'],
-            'peserta'       => $moora->getAllPeserta(),
+            'sawPeserta'       => $saw->getAllPeserta(),
+            'topsisPeserta'       => $topsis->getAllPeserta(),
             'kelayakan'     => $kelayakan
         ];
 
