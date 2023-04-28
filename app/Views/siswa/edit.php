@@ -52,8 +52,8 @@
                         <div class="col-md-8">
                             <select class="form-control" name="jenis_kelamin" id="" required>
                                 <optio value="">Pilih Jenis Kelamin</option>
-                                    <option <?= ($siswa['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?> value="Laki-Laki">Laki-Laki</option>
-                                    <option <?= ($siswa['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?> value="Perempuan">Perempuan</option>
+                                    <option <?= ($siswa['jenis_kelamin'] == 'Laki-laki') ? 'selected' : '' ?> value="Laki-laki">Laki-laki</option>
+                                    <option <?= ($siswa['jenis_kelamin'] == 'Perempuan') ? 'selected' : '' ?> value="Perempuan">Perempuan</option>
                             </select>
                         </div>
                     </div>

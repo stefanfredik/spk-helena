@@ -16,7 +16,36 @@
 
 
             <form action="<?= $meta['url']; ?>" method="POST" id="formUpload" onsubmit="upload(event)" enctype="multipart/form-data">
+
                 <div class="modal-body">
+                    <div class="badge bg-warning p-3">
+                        Agar tidak terjadi kesalahan data saat mengupload file excel. Silahkan sesuaikan format excel seusia kriteria berikut :
+                    </div>
+                    <div class="mt-2">
+                        <ul>
+                            <li>
+                                Urutan tabel sesuai dengan kriteria berikut.
+                                <div>
+                                    <h3>Kriteria Upload File</h3>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <th>NISN</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Tempat Lahir</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Kelas</th>
+                                            <th>Nama Orang Tua</th>
+                                            <th>Alamat</th>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </li>
+                            <li>Penulisan Tanggal Lahir sesuai format contoh berikut : 01/12/2005 </li>
+
+                        </ul>
+                    </div>
+
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Silahkan Upload File Excel anda Sesuai dengan ketentuan di atas.</label>
                         <input name="excel_file" id="excel-file" type="file" class="form-control">

@@ -3,7 +3,7 @@
 <script>
     const Toast = Swal.mixin({
         position: 'center',
-        timer: 1000,
+        timer: 1500,
         showConfirmButton: false,
     })
 
@@ -239,15 +239,22 @@
                     title: res.msg
                 });
             },
-            error: function() {
+            error: function(jqXHR, textStatus, errorThrown) {
                 $('#loading').hide();
                 modal.modal("hide");
                 getTable(url)
+                if (jqXHR.responseJSON.error) {
+                    Toast.fire({
+                        icon: "error",
+                        title: `Upload Gagal. ${jqXHR.responseJSON.error}`,
+                    });
+                } else {
+                    Toast.fire({
+                        icon: "error",
+                        title: `Upload Gagal.`,
+                    });
+                }
 
-                Toast.fire({
-                    icon: "error",
-                    title: "Gagal Mengupload data!"
-                });
             }
         });
     }

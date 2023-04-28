@@ -53,6 +53,11 @@
             </a>
 
             <div class="sidenav-menu-heading">Pengelolahan</div>
+
+            <a class="nav-link" href="/periode">
+                <div class="nav-link-icon"><i data-feather="percent"></i></div>
+                Data Kuota dan Periode
+            </a>
             <a class="nav-link" href="/perhitungan">
                 <div class="nav-link-icon"><i data-feather="percent"></i></div>
                 Data Perhitungan

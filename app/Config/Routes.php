@@ -139,6 +139,20 @@ $routes->group('user', static function ($router) {
 });
 
 
+$routes->group('periode', static function ($router) {
+    $router->get('/', 'User::index');
+    $router->get('table', 'User::table');
+    $router->get('tambah', 'User::tambah');
+    $router->get('(:num)', 'User::edit/$1');
+    // $router->get('delete/(:num)', 'User::delete/$1');
+
+    $router->post('/', 'User::store');
+    $router->post("(:num)", "User::update/$1");
+
+    $router->delete("(:num)", "User::delete/$1");
+});
+
+
 
 
 $routes->get("perhitungan", 'Perhitungan::index');
