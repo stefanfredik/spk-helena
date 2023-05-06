@@ -164,6 +164,7 @@ class TopsisLib
     public function sortPeserta()
     {
         usort($this->dataAkhir, fn ($a, $b) => $b['nilaiAkhir'] <=> $a['nilaiAkhir']);
+        return $this;
     }
 
 

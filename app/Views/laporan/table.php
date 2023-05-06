@@ -15,20 +15,17 @@
         <tbody>
             <?php $no = 1;
             // dd($dataPeserta);
-            foreach ($dataPeserta as $dt) : ?>
-                <?php if ($dt['status_layak'] != 'Tidak Layak') : ?>
-                    <tr>
-                        <td class="text-center"><?= $no++; ?></td>
-                        <td><?= $dt['nisn']; ?></td>
-                        <td><?= $dt['nama_lengkap']; ?></td>
-                        <td><?= $dt['jenis_kelamin'] ?></td>
-                        <td><?= $dt['tanggal_lahir']; ?></td>
-                        <td><?= $dt['tempat_lahir']; ?></td>
-                        <td><?= $dt['alamat']; ?></td>
-                        <td>1</td>
-                    </tr>
-
-                <?php endif; ?>
+            foreach ($sawPeserta as $dt) : ?>
+                <tr>
+                    <td class="text-center"><?= $no++; ?></td>
+                    <td><?= $dt['nisn']; ?></td>
+                    <td><?= $dt['nama_lengkap']; ?></td>
+                    <td><?= $dt['jenis_kelamin'] ?></td>
+                    <td><?= $dt['tanggal_lahir']; ?></td>
+                    <td><?= $dt['tempat_lahir']; ?></td>
+                    <td><?= $dt['alamat']; ?></td>
+                    <td></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
