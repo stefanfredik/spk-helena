@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Libraries\Moora;
 use App\Models\KelayakanModel;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
@@ -54,7 +53,7 @@ class Perhitungan extends BaseController
 
 
         // dd($peserta);
-        // dd($moora);
+        // dd($topsis);
 
         $data = [
             'title' => 'Data Perhitungan dan Table Moora',
@@ -62,7 +61,9 @@ class Perhitungan extends BaseController
             'sawPeserta' => $saw->getAllPeserta(),
             'topsisPeserta' => $topsis->getAllPeserta(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
-            'bobotKriteria' => $saw->bobotKriteria
+            'bobotKriteria' => $saw->bobotKriteria,
+            'topsisAplus' => $topsis->aPlus,
+            'topsisAminus' => $topsis->aMinus
         ];
 
         return view('/perhitungan/index', $data);

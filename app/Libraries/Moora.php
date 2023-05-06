@@ -218,11 +218,13 @@ class Moora
         }
 
 
-        return number_format($bobot / sqrt($nilai), 4);
+        return $bobot / sqrt($nilai);
+        // return number_format($bobot / sqrt($nilai), 4);
     }
 
     private function optimasi($nilai, $bobot): float
     {
-        return number_format($nilai * $bobot, 4);
+        // return number_format($nilai * $bobot, 4);
+        return ($nilai * $bobot);
     }
 }

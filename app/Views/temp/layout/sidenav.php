@@ -1,5 +1,11 @@
 <nav class="sidenav shadow-right sidenav-dark">
     <div class="sidenav-menu">
+        <div class="text-center my-2">
+            <img width="80" class="img-fluid my-2" src="/assets/img/logo.png" alt="">
+            <p class="fw-bold"><?= "SPK SMPN 2 Boleng" ?></p>
+        </div>
+        <hr class="mx-3">
+
         <div class="nav accordion" id="accordionSidenav">
 
             <div class="sidenav-menu-heading d-sm-none">Account</div>
@@ -54,7 +60,7 @@
 
             <div class="sidenav-menu-heading">Pengelolahan</div>
 
-            <a class="nav-link" href="/periode">
+            <a class="nav-link" href="/kuota">
                 <div class="nav-link-icon"><i data-feather="percent"></i></div>
                 Data Kuota dan Periode
             </a>

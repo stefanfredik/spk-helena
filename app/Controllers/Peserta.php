@@ -9,7 +9,8 @@ use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
 use CodeIgniter\API\ResponseTrait;
 
-class Peserta extends BaseController {
+class Peserta extends BaseController
+{
     use ResponseTrait;
     var $meta = [
         'url' => 'datapeserta',
@@ -18,14 +19,16 @@ class Peserta extends BaseController {
     ];
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->pesertaModel = new PesertaModel();
         $this->siswaModel = new SiswaModel();
         $this->kriteriaModel = new KriteriaModel();
         $this->subKriteriaModel = new SubkriteriaModel();
     }
 
-    public function index() {
+    public function index()
+    {
 
         $data = [
             'title' => 'Data Peserta',
@@ -35,7 +38,8 @@ class Peserta extends BaseController {
         return view('/peserta/index', $data);
     }
 
-    public function table() {
+    public function table()
+    {
         $data = [
             'title' => 'Data Data Peserta',
             'meta'   => $this->meta,
@@ -45,7 +49,8 @@ class Peserta extends BaseController {
         return view('/peserta/table', $data);
     }
 
-    public function tambah() {
+    public function tambah()
+    {
         $data = [
             'title' => 'Tambah Data Peserta',
             'meta'   => $this->meta,
@@ -58,7 +63,8 @@ class Peserta extends BaseController {
         return view('/peserta/tambah', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $data = [
             'title' => 'Edit Data Peserta',
             'meta'   => $this->meta,
@@ -72,13 +78,14 @@ class Peserta extends BaseController {
     }
 
 
-    public function detail($id) {
+    public function detail($id)
+    {
 
         $data = [
             'dataKriteria'  => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subKriteriaModel->findAll(),
             'dataSiswa' => $this->siswaModel->findAll(),
-            'peserta' => $this->pesertaModel->findAllPeserta($id)[0],
+            'peserta' => $this->pesertaModel->findPeserta($id),
             'meta'   => $this->meta
         ];
 
@@ -91,7 +98,8 @@ class Peserta extends BaseController {
     // CRUD
 
 
-    public function store() {
+    public function store()
+    {
         $data = $this->request->getPost();
         $this->pesertaModel->save($data);
 
@@ -104,7 +112,8 @@ class Peserta extends BaseController {
         return $this->respond($res, 200);
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $data = $this->request->getPost();
         $this->pesertaModel->update($id, $data);
 
@@ -117,7 +126,8 @@ class Peserta extends BaseController {
     }
 
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->pesertaModel->delete($id);
         $res = [
             'status'    => 'success',

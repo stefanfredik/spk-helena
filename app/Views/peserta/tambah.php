@@ -7,6 +7,25 @@
             </div>
             <form action="<?= $meta['url']; ?>" method="" id="formTambah" onsubmit="save(event)">
                 <div class="modal-body">
+
+
+
+                    <div class="row mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label">Tahun Bantuan</label>
+                        </div>
+
+
+                        <div class="col-md-8">
+                            <select class="form-control" name="tahun" id="">
+                                <option value="">Pilih Tahun</option>
+                                <?php for ($i = 2015; $i < 2030; $i++) :   ?>
+                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row mb-2">
                         <div class="col-md-4">
                             <label class="form-label">Penduduk</label>

@@ -6,6 +6,9 @@ class TopsisLib
 {
     private $dataAkhir = [];
     public $bobotKriteria = [];
+    public $aPlus = [];
+    public $aMinus = [];
+
 
 
     public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria)
@@ -14,6 +17,11 @@ class TopsisLib
         $this->hitungBobotKriteria();
         $this->setNilai();
         $this->normalisasi();
+        $this->hitungNormalisasiTerbobot();
+        $this->hitungAplus();
+        $this->hitungAMinus();
+        $this->hitungSolusiIdealPositive();
+        $this->hitungSolusiIdealNegative();
         $this->hitungNilaiAkhir();
         // $this->sortPeserta();
     }
@@ -81,15 +89,75 @@ class TopsisLib
     }
 
 
+
+    private function hitungNormalisasiTerbobot()
+    {
+        foreach ($this->dataAkhir as $key =>  $da) {
+            foreach ($this->dataKriteria as $dk) {
+                $this->dataAkhir[$key]["normalisasiTerbobot"][$dk["keterangan"]] =  $this->bobotKriteria[$dk["keterangan"]] * $da['normalisasi'][$dk["keterangan"]];
+            }
+        }
+    }
+
+    private function hitungAplus()
+    {
+        foreach ($this->dataKriteria as $dk) {
+            $tempMax[$dk["keterangan"]] = [];
+
+            foreach ($this->dataAkhir as $key =>  $da) {
+                array_push($tempMax[$dk["keterangan"]], $da['normalisasiTerbobot'][$dk["keterangan"]]);
+            }
+
+            $this->aPlus[$dk["keterangan"]] = max($tempMax[$dk["keterangan"]]);
+        }
+    }
+
+    private function hitungAminus()
+    {
+        foreach ($this->dataKriteria as $dk) {
+            $tempMax[$dk["keterangan"]] = [];
+
+            foreach ($this->dataAkhir as $key =>  $da) {
+                array_push($tempMax[$dk["keterangan"]], $da['normalisasiTerbobot'][$dk["keterangan"]]);
+            }
+
+            $this->aMinus[$dk["keterangan"]] = min($tempMax[$dk["keterangan"]]);
+        }
+    }
+
+
+    private function hitungSolusiIdealPositive()
+    {
+
+        foreach ($this->dataAkhir as $key => $da) {
+            $temp = 0;
+            foreach ($this->dataKriteria as $dk) {
+                $temp += pow($this->aPlus[$dk["keterangan"]] - $da['normalisasiTerbobot'][$dk["keterangan"]], 2);
+            }
+
+            $this->dataAkhir[$key]["idealPositive"] =  number_format(sqrt($temp), 3);
+        }
+    }
+
+
+    private function hitungSolusiIdealNegative()
+    {
+
+        foreach ($this->dataAkhir as $key => $da) {
+            $temp = 0;
+            foreach ($this->dataKriteria as $dk) {
+                $temp += pow($this->aMinus[$dk["keterangan"]] - $da['normalisasiTerbobot'][$dk["keterangan"]], 2);
+            }
+
+            $this->dataAkhir[$key]["idealNegative"] = number_format(sqrt($temp), 3);
+        }
+    }
+
+
     private function hitungNilaiAkhir()
     {
         foreach ($this->dataAkhir as $key => $da) {
-            $temp = 0;
-            foreach ($this->dataKriteria as $i => $dk) {
-                $temp += ($this->bobotKriteria[$dk["keterangan"]]) * $da["normalisasi"][$dk["keterangan"]];
-            }
-
-            $this->dataAkhir[$key]["nilaiAkhir"] =  $temp;
+            $this->dataAkhir[$key]['nilaiAkhir'] = number_format($da["idealNegative"] / ($da['idealNegative'] + $da['idealPositive']), 3);
         }
     }
 
@@ -97,7 +165,6 @@ class TopsisLib
     {
         usort($this->dataAkhir, fn ($a, $b) => $b['nilaiAkhir'] <=> $a['nilaiAkhir']);
     }
-
 
 
     public function getAllPeserta()
@@ -119,6 +186,6 @@ class TopsisLib
             $nilai += pow($arr, 2);
         }
 
-        return number_format($bobot / sqrt($nilai), 4);
+        return number_format($bobot / sqrt($nilai), 2);
     }
 }
