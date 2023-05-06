@@ -8,7 +8,7 @@ class SawLib
 {
     private $dataAkhir = [];
     public $bobotKriteria = [];
-
+    public $pesertaKriteria = [];
 
     public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria)
     {
@@ -74,10 +74,30 @@ class SawLib
             }
         }
 
+        // dd($kriteria);
+
+
+        // foreach ($this->dataKriteria as $dk) {
+        //     $kriteria[$dk["keterangan"]] = [];
+
+        //     foreach ($this->dataAkhir as $key =>  $da) {
+        //         array_push($kriteria[$dk["keterangan"]], $da["kriteria_nilai"][$dk["keterangan"]]);
+        //     }
+        // }
+
+        // foreach ($this->dataAkhir as $key => $da) {
+        //     foreach ($this->dataKriteria as $dk) {
+
+        //         // $this->pesertaKriteria[$dk["keterangan"]] = $da["kriteria_nilai"][$dk["keterangan"]] / max($kriteria[$dk["keterangan"]]);
+        //     }
+        // }
+
+
+
         // hitung normalisasi
         foreach ($this->dataAkhir as $key => $da) {
             foreach ($this->dataKriteria as $dk) {
-                $this->dataAkhir[$key]["normalisasi"][$dk["keterangan"]] = $da["kriteria_nilai"][$dk["keterangan"]] / max($kriteria[$dk["keterangan"]]);
+                $this->dataAkhir[$key]["normalisasi"][$dk["keterangan"]] = ($da["kriteria_nilai"][$dk["keterangan"]] / max($kriteria[$dk["keterangan"]]));
             }
         }
     }
