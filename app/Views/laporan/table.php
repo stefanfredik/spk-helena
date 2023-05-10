@@ -15,7 +15,7 @@
         <tbody>
             <?php $no = 1;
             // dd($dataPeserta);
-            foreach ($sawPeserta as $dt) : ?>
+            foreach ($peserta as $dt) : ?>
                 <tr>
                     <td class="text-center"><?= $no++; ?></td>
                     <td><?= $dt['nisn']; ?></td>

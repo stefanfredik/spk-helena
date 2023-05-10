@@ -20,19 +20,20 @@ class Laporan extends BaseController
 
     public function __construct()
     {
+        $this->kriteriaModel = new KriteriaModel();
+        $this->subkriteriaModel = new SubkriteriaModel();
     }
 
     public function index()
     {
 
-        dd($this->laporan());
+        // dd($this->laporan());
 
         $data = [
             'title' => $this->meta['title'],
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
-            'sawPeserta' => $saw->sortPeserta()->getAllPeserta(),
-            'topsisPeserta' => $topsis->sortPeserta()->getAllPeserta(),
+            'peserta' => $this->laporan()
         ];
 
         return view('/laporan/index', $data);

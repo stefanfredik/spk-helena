@@ -1,7 +1,6 @@
 <?= $this->extend('/temp/index'); ?>
 <?= $this->section("content"); ?>
 
-
 <div class="row m-2">
     <div class="col-lg-6">
         <div class="row">
@@ -39,7 +38,7 @@
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
                                                 <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
-                                                <td><?= $ps['periode']; ?></td>
+                                                <td><?= 'Periode ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -102,7 +101,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <?= $this->endSection(); ?>
