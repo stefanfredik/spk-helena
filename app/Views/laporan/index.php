@@ -36,12 +36,6 @@
         }
     };
 
-    $('#tablePenduduk').DataTable(config)
-    $('#tableBlt').DataTable(config)
-
-
-    function cetakLaporanBlt() {
-        alert("blt");
-    }
+    $('#table').DataTable(config)
 </script>
 <?= $this->endSection(); ?>

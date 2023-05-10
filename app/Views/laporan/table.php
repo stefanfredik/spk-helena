@@ -9,6 +9,10 @@
                 <th class="text-center">Tanggal Lahir</th>
                 <th class="text-center">Tempat Lahir</th>
                 <th class="text-center">Alamat</th>
+                <th class="text-center">Nilai SAW</th>
+                <th class="text-center">Nilai Topsis</th>
+                <th class="text-center">Rangking</th>
+                <th class="text-center">Status</th>
                 <th class="text-center">Periode</th>
             </tr>
         </thead>
@@ -24,7 +28,12 @@
                     <td><?= $dt['tanggal_lahir']; ?></td>
                     <td><?= $dt['tempat_lahir']; ?></td>
                     <td><?= $dt['alamat']; ?></td>
-                    <td></td>
+                    <td><?= $dt['nilaiSaw']; ?></td>
+                    <td><?= $dt['nilaiTopsis']; ?></td>
+                    <td><?= $no; ?></td>
+                    <td><?= $dt['status']; ?></td>
+                    <td><?= 'Periode ' . $dt['periode']; ?></td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>
