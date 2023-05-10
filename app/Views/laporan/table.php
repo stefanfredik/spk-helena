@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1;
+            <?php $no = 0;
             // dd($dataPeserta);
             foreach ($peserta as $dt) : ?>
                 <tr>
-                    <td class="text-center"><?= $no++; ?></td>
+                    <td class="text-center"><?= ++$no; ?></td>
                     <td><?= $dt['nisn']; ?></td>
                     <td><?= $dt['nama_lengkap']; ?></td>
                     <td><?= $dt['jenis_kelamin'] ?></td>
