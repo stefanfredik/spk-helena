@@ -97,7 +97,7 @@ class SawLib
         // hitung normalisasi
         foreach ($this->dataAkhir as $key => $da) {
             foreach ($this->dataKriteria as $dk) {
-                $this->dataAkhir[$key]["normalisasi"][$dk["keterangan"]] = ($da["kriteria_nilai"][$dk["keterangan"]] / max($kriteria[$dk["keterangan"]]));
+                $this->dataAkhir[$key]["normalisasi"][$dk["keterangan"]] = number_format($da["kriteria_nilai"][$dk["keterangan"]] / max($kriteria[$dk["keterangan"]]), 2);
             }
         }
     }
