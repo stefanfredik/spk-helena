@@ -7,8 +7,8 @@
         <button data-url="<?= '/' . $meta['url'] . '/upload'; ?>" class="mb-2 btn btn-purple" onclick="add(this)"><i class="bi bi-upload mx-1"></i><span>Upload Excel</span></button>
 
         <div class="card border shadow">
-            <div class="card-header bg-pink text-white ">
-                <?= $title; ?>
+            <div class="card-header">
+                <h3><?= $title; ?></h3>
             </div>
             <div id="data" class="card-body"></div>
         </div>
