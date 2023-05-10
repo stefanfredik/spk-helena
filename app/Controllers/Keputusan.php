@@ -8,6 +8,7 @@ use App\Libraries\SawLib;
 use App\Libraries\TopsisLib;
 use App\Models\KelayakanModel;
 use App\Models\KriteriaModel;
+use App\Models\KuotaModel;
 use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
@@ -22,13 +23,12 @@ class Keputusan extends BaseController
 
     public function __construct()
     {
-        $this->kriteriaModel = new KriteriaModel();
-        $this->siswaModel = new SiswaModel();
+        $this->kriteriaModel    = new KriteriaModel();
+        $this->siswaModel       = new SiswaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
-        $this->pesertaModel = new PesertaModel();
-        $this->kelayakanModel = new KelayakanModel();
-        // $this->jumlahKriteria = $this->kriteriaModel > countAllResults();
-        // $this->keputusanModel = new KeputusanBltModel();
+        $this->pesertaModel     = new PesertaModel();
+        $this->kelayakanModel   = new KelayakanModel();
+        $this->kuotaModel       = new KuotaModel();
     }
 
     public function index()
@@ -43,37 +43,67 @@ class Keputusan extends BaseController
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
         $saw = new SawLib($peserta, $kriteria, $subkriteria);
-        $topsis = new TopsisLib($peserta, $kriteria, $subkriteria);
-
         $saw->sortPeserta();
+        $saw->setRangking();
+
+        $topsis = new TopsisLib($peserta, $kriteria, $subkriteria);
         $topsis->sortPeserta();
+        $topsis->setRangking();
 
-
+        $sawPeserta     = $saw->getAllPeserta();
+        $topsisPeserta  = $saw->getAllPeserta();
+        $dataKuota      = $this->kuotaModel->findAll();
 
         $data = [
-            'title'         => 'Data Perhitungan dan Table Moora',
-            'url'           => $this->meta['url'],
-            'sawPeserta'       => $saw->getAllPeserta(),
-            'topsisPeserta'       => $topsis->getAllPeserta(),
-            'kelayakan'     => $kelayakan
+            'title'             => 'Data Perhitungan dan Table Moora',
+            'url'               => $this->meta['url'],
+            'sawPeserta'        => $this->statusKeputusan($sawPeserta, $dataKuota),
+            'topsisPeserta'     => $this->statusKeputusan($topsisPeserta, $dataKuota),
+            'kelayakan'         => $kelayakan
         ];
 
-        // $peserta = [];
-
-        // foreach ($data['peserta'] as $key => $ps) {
-        //     $peserta[$key]['nama_lengkap'] = $ps['nama_lengkap'];
-        //     $peserta[$key]['nisn'] = $ps['nisn'];
-        //     $peserta[$key]['tempat_lahir'] = $ps['tempat_lahir'];
-        //     $peserta[$key]['tanggal_lahir'] = $ps['tanggal_lahir'];
-        //     $peserta[$key]['jenis_kelamin'] = $ps['jenis_kelamin'];
-        //     $peserta[$key]['nilai'] = $ps['kriteria_nilai'];
-        //     $peserta[$key]['status_layak'] = $ps['status_layak'];
-        // }
-
-        // $this->keputusanModel->truncate();
-        // $this->keputusanModel->insertBatch($peserta);
-
-
         return view('/keputusan/index', $data);
+    }
+
+    private function statusKeputusan($dataPeserta, $dataKuota)
+    {
+        // hitung kuota tahunan
+        $kuotaTahun = [];
+        foreach ($dataKuota as $row) {
+            $tahun = $row['tahun'];
+            $jumlahKuota = $row['jumlah_kuota'];
+
+            if (isset($kuotaTahun[$tahun])) {
+                $kuotaTahun[$tahun] += $jumlahKuota;
+            } else {
+                $kuotaTahun[$tahun] = $jumlahKuota;
+            }
+        }
+
+
+        foreach ($dataPeserta as $key => $ps) {
+            $tahun = $ps['tahun'];
+            $rangking = $ps['rangking'];
+            $kuotaPeriode = 0;
+
+            foreach ($dataKuota as $ku) {
+                if ($tahun == $ku['tahun'] && $rangking <= $kuotaTahun[$tahun]) {
+                    $kuotaPeriode += $ku['jumlah_kuota'];
+
+                    $dataPeserta[$key]['status'] = 'Mendapatkan Bantuan';
+                    if ($rangking <= $kuotaPeriode) {
+                        $dataPeserta[$key]['periode'] = $ku['periode'];
+                        $dataPeserta[$key]['tanggalTerima'] = $ku['tanggal_terima'];
+                        break;
+                    }
+                } else {
+                    $dataPeserta[$key]['periode'] = 'Tidak Tersedia';
+                    $dataPeserta[$key]['tanggalTerima'] = 'Tidak Tersedia';
+                    $dataPeserta[$key]['status'] = 'Tidak Mendapatkan Bantuan';
+                }
+            }
+        }
+
+        return $dataPeserta;
     }
 }

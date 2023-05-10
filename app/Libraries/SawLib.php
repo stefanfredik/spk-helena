@@ -111,7 +111,7 @@ class SawLib
                 $temp += ($this->bobotKriteria[$dk["keterangan"]]) * $da["normalisasi"][$dk["keterangan"]];
             }
 
-            $this->dataAkhir[$key]["nilaiAkhir"] =  $temp;
+            $this->dataAkhir[$key]["nilaiAkhir"] =  number_format($temp, 3);
         }
     }
 
@@ -119,6 +119,14 @@ class SawLib
     {
         usort($this->dataAkhir, fn ($a, $b) => $b['nilaiAkhir'] <=> $a['nilaiAkhir']);
         return $this;
+    }
+
+    public function setRangking()
+    {
+        foreach ($this->dataAkhir as $key => $da) {
+            $this->dataAkhir[$key]['rangking'] = $key + 1;
+            $this->dataAkhir[$key]['periode'] = "";
+        }
     }
 
 

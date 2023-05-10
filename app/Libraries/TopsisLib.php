@@ -173,6 +173,14 @@ class TopsisLib
         return $this->dataAkhir;
     }
 
+    public function setRangking()
+    {
+        foreach ($this->dataAkhir as $key => $da) {
+            $this->dataAkhir[$key]['rangking'] = $key + 1;
+            $this->dataAkhir[$key]['periode'] = "";
+        }
+    }
+
 
 
     // helper function

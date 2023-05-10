@@ -8,7 +8,6 @@ use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
-use App\Libraries\Saw;
 use App\Libraries\SawLib;
 use App\Libraries\TopsisLib;
 

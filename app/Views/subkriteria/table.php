@@ -42,7 +42,7 @@
                                     <div class="my-1">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button onclick="remove('<?= $url; ?>', this)" class="btn btn-sm text-white btn-danger" data-id="<?= $sk['id'] ?>"><i class="bi bi-trash mr-2"></i></button>
-                                            <button onclick="edit('<?= $url; ?>', this)" class="btn btn-sm  btn-primary" data-id="<?= $sk['id'] ?>"><i class="bi bi-pencil-square mr-2"></i></button>
+                                            <button onclick="edit('<?= $url; ?>', this)" class="btn btn-sm  btn-indigo" data-id="<?= $sk['id'] ?>"><i class="bi bi-pencil-square mr-2"></i></button>
                                         </div>
                                     </div>
                                 </div>

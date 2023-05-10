@@ -3,21 +3,106 @@
 
 
 <div class="row m-2">
-    <div class="card p-3">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#saw" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Saw</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#topsis" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Topsis</button>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="myTabContent">
-            <?= $this->include("keputusan/saw"); ?>
-            <?= $this->include("keputusan/topsis"); ?>
+    <div class="col-lg-6">
+        <div class="row">
+            <h3 class="m-3">Perhitungan Metode SAW</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tabel Kriteria</h3>
+                        </div>
+                        <div id="data" class="card-body">
+                            <div class="table-responsive">
+                                <table id="table" class="table table-bordered" width="100%" colspacing="0">
+                                    <thead>
+                                        <tr class="align-middle">
+                                            <th class="text-center" width="80">Rangking</th>
+                                            <th>NISN</td>
+                                            <th>Nama Lengkap</th>
+                                            <th>Kelas</td>
+                                            <th>Nilai Akhir</td>
+                                            <th>Keputusan</th>
+                                            <th>Periode</th>
+                                            <th>Tanggal Terima Bantuan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $rank = 1;
+                                        foreach ($sawPeserta as $ps) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center "><span class="badge bg-pink rounded rounded-circle"><?= $rank++; ?></span></td>
+                                                <td><?= $ps['nisn'] ?></td>
+                                                <td><?= $ps['nama_lengkap'] ?></td>
+                                                <td><?= $ps['kelas'] ?></td>
+                                                <td><?= $ps['nilaiAkhir']; ?></td>
+                                                <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
+                                                <td><?= $ps['periode']; ?></td>
+                                                <td><?= $ps['tanggalTerima']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="col-lg-6">
+        <div class="row">
+            <h3 class="m-3">Perhitungan Metode SAW</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tabel Kriteria</h3>
+                        </div>
+                        <div id="data" class="card-body">
+                            <div class="table-responsive">
+                                <table id="table" class="table table-bordered" width="100%" colspacing="0">
+                                    <thead>
+                                        <tr class="align-middle">
+                                            <th class="text-center" width="80">Rangking</th>
+                                            <th>NISN</td>
+                                            <th>Nama Lengkap</th>
+                                            <th>Kelas</td>
+                                            <th>Nilai Akhir</td>
+                                            <th>Keputusan</th>
+                                            <th>Periode</th>
+                                            <th>Tanggal Terima Bantuan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $rank = 1;
+                                        foreach ($topsisPeserta as $ps) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center "><span class="badge bg-pink rounded rounded-circle"><?= $rank++; ?></span></td>
+                                                <td><?= $ps['nisn'] ?></td>
+                                                <td><?= $ps['nama_lengkap'] ?></td>
+                                                <td><?= $ps['kelas'] ?></td>
+                                                <td><?= $ps['nilaiAkhir']; ?></td>
+                                                <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
+                                                <td><?= $ps['periode']; ?></td>
+                                                <td><?= $ps['tanggalTerima']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <?= $this->endSection(); ?>
