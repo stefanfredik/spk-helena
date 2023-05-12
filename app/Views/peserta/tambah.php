@@ -7,9 +7,6 @@
             </div>
             <form action="<?= $meta['url']; ?>" method="" id="formTambah" onsubmit="save(event)">
                 <div class="modal-body">
-
-
-
                     <div class="row mb-2">
                         <div class="col-md-4">
                             <label class="form-label">Tahun Bantuan</label>
@@ -33,7 +30,7 @@
 
 
                         <div class="col-md-8">
-                            <select class="form-control" name="id_siswa" id="" required>
+                            <select class="" name="id_siswa" id="nama" required>
                                 <option value="">Pilih Siswa</option>
                                 <?php foreach ($dataSiswa as $dt) : ?>
                                     <option value="<?= $dt['id']; ?>"><?= $dt['nama_lengkap']; ?></option>
@@ -70,3 +67,11 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $("#nama").select2({
+        theme: "bootstrap-5",
+        dropdownParent: $('#modal')
+    });
+</script>

@@ -10,7 +10,7 @@
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
-                <div class="container-xl px-4">
+                <div class="container-xl px-5">
                     <div class="row justify-content-center">
                         <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
                             <!-- Social login form-->

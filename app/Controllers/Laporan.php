@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Libraries\Moora;
 use App\Libraries\SawLib;
 use App\Libraries\TopsisLib;
 use App\Models\KriteriaModel;
 use App\Models\KuotaModel;
 use App\Models\PesertaModel;
 use App\Models\SubkriteriaModel;
+use Dompdf\Dompdf;
 
 class Laporan extends BaseController
 {
@@ -23,31 +23,31 @@ class Laporan extends BaseController
     {
         $this->kriteriaModel = new KriteriaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
+        $this->kuotaModel = new KuotaModel();
+        $this->pesertaModel = new PesertaModel();
     }
 
     public function index()
     {
-
-        // dd($this->laporan());
-
         $data = [
             'title' => $this->meta['title'],
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
-            'peserta' => $this->laporan()
+            'peserta' => $this->data()
         ];
 
         return view('/laporan/index', $data);
     }
 
-
-    private function laporan()
+    public function cetak()
     {
-        $this->pesertaModel = new PesertaModel();
-        $this->kriteriaModel = new KriteriaModel();
-        $this->subkriteriaModel = new SubkriteriaModel();
-        $this->kuotaModel = new KuotaModel();
+        $data['peserta'] = $this->data();
+        $data["title"] = 'LAPORAN ' . APP_DESC;
+        $this->pdf($data, "laporan/cetak");
+    }
 
+    private function data()
+    {
         $peserta = $this->pesertaModel->findAllPeserta();
         $kriteria = $this->kriteriaModel->findAll();
         $subkriteria = $this->subkriteriaModel->findAll();
@@ -73,14 +73,13 @@ class Laporan extends BaseController
         }
 
         usort($data, fn ($a, $b) => $b['nilaiTopsis'] <=> $a['nilaiTopsis']);
-
         return $data;
     }
 
     private function statusKeputusan($dataPeserta, $dataKuota)
     {
-        // hitung kuota tahunan
         $kuotaTahun = [];
+
         foreach ($dataKuota as $row) {
             $tahun = $row['tahun'];
             $jumlahKuota = $row['jumlah_kuota'];
@@ -91,7 +90,6 @@ class Laporan extends BaseController
                 $kuotaTahun[$tahun] = $jumlahKuota;
             }
         }
-
 
         foreach ($dataPeserta as $key => $ps) {
             $tahun = $ps['tahun'];
@@ -117,5 +115,17 @@ class Laporan extends BaseController
         }
 
         return $dataPeserta;
+    }
+
+    private function pdf(array $data, String $view)
+    {
+        $pdf = new Dompdf(array('DOMPDF_ENABLE_REMOTE' => true));
+
+        $html = view($view, $data);
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->render();
+
+        return $pdf->stream();
     }
 }

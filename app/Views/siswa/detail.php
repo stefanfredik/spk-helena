@@ -85,7 +85,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                <button onclick="edit('<?= $meta['url'] ?>',this)" data-id="<?= $siswa['id']; ?>" type="submit" class="btn btn-primary">Edit</button>
+                <?php if (in_groups("admin")) : ?>
+                    <button onclick="edit('<?= $meta['url'] ?>',this)" data-id="<?= $siswa['id']; ?>" type="submit" class="btn btn-primary">Edit</button>
+                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -12,10 +12,9 @@ class Kuota extends BaseController
 
     var $meta = [
         'url' => 'kuota',
-        'title' => 'Kuota dan Periode',
-        'subtitle' => 'Halaman Kuota dan Periode'
+        'title' => 'Tahap dan Jumlah Kuota Bantuan',
+        'subtitle' => 'Data Tahap dan Jumlah Kuota Bantuan'
     ];
-
 
     public function __construct()
     {
@@ -26,7 +25,7 @@ class Kuota extends BaseController
     {
         $data = [
             'meta' => $this->meta,
-            'title' => 'Data Kuota dan Periode'
+            'title' => 'Tahap dan Jumlah Kuota Bantuan'
         ];
 
         return view("kuota/index", $data);
@@ -35,7 +34,7 @@ class Kuota extends BaseController
     public function table()
     {
         $data = [
-            'title' => 'Data Kuota dan Periode',
+            'title' => 'Tahap dan Jumlah Kuota Bantuan',
             'url'   => $this->meta['url'],
             'dataKuota' => $this->kuotaModel->findAll()
         ];
@@ -46,7 +45,7 @@ class Kuota extends BaseController
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Data Kuota dan Periode',
+            'title' => 'Tambah Tahap dan Jumlah Kuota Bantuan',
             'url'   => $this->meta['url']
         ];
 
@@ -56,7 +55,7 @@ class Kuota extends BaseController
     public function edit($id)
     {
         $data = [
-            'title' => 'Edit Data Kuota',
+            'title' => 'Edit Tahap dan Jumlah Kuota Bantuan',
             'kuota'  => $this->kuotaModel->find($id),
             'meta'      => $this->meta
         ];
@@ -65,8 +64,6 @@ class Kuota extends BaseController
     }
 
 
-    //  crud
-
     public function store()
     {
         $data = $this->request->getPost();
@@ -74,7 +71,7 @@ class Kuota extends BaseController
 
         $res = [
             'status' => 'success',
-            'msg'   => 'Data Kriteria Berhasil Ditambahkan.',
+            'msg'   => 'Data Berhasil Ditambahkan.',
             'data'  => $data
         ];
 
@@ -96,10 +93,10 @@ class Kuota extends BaseController
         return $this->respond($res, 200);
     }
 
-
     public function delete($id)
     {
         $this->kuotaModel->delete($id);
+
         $res = [
             'status'    => 'success',
             'msg'     => 'Data berhasil dihapus.',

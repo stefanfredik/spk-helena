@@ -1,15 +1,15 @@
 <?= $this->extend('/temp/index'); ?>
 <?= $this->section("content"); ?>
 
-<div class="row m-2">
+<div class="row">
     <div class="col-lg-6">
         <div class="row">
-            <h3 class="m-3">Perhitungan Metode SAW</h3>
+            <!-- <h3 class="m-3">Perhitungan Metode SAW</h3> -->
             <div class="row">
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Tabel Kriteria</h3>
+                            <h3>Tabel Keputusan SAW</h3>
                         </div>
                         <div id="data" class="card-body">
                             <div class="table-responsive">
@@ -54,12 +54,12 @@
 
     <div class="col-lg-6">
         <div class="row">
-            <h3 class="m-3">Perhitungan Metode SAW</h3>
+            <!-- <h3 class="m-3">Perhitungan Metode Topsis</h3> -->
             <div class="row">
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Tabel Kriteria</h3>
+                            <h3>Tabel Keputusan Topsis</h3>
                         </div>
                         <div id="data" class="card-body">
                             <div class="table-responsive">

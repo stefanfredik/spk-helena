@@ -8,12 +8,14 @@
                 <th class="text-center">Jenis Kelamin</th>
                 <th class="text-center">Tanggal Lahir</th>
                 <th class="text-center">Tempat Lahir</th>
+                <th class="text-center">Kelas</th>
                 <th class="text-center">Alamat</th>
                 <th class="text-center">Nilai SAW</th>
                 <th class="text-center">Nilai Topsis</th>
                 <th class="text-center">Rangking</th>
                 <th class="text-center">Status</th>
                 <th class="text-center">Periode</th>
+                <th class="text-center">Tanggal Terima</th>
             </tr>
         </thead>
         <tbody>
@@ -27,12 +29,14 @@
                     <td><?= $dt['jenis_kelamin'] ?></td>
                     <td><?= $dt['tanggal_lahir']; ?></td>
                     <td><?= $dt['tempat_lahir']; ?></td>
+                    <td><?= $dt['kelas']; ?></td>
                     <td><?= $dt['alamat']; ?></td>
                     <td><?= $dt['nilaiSaw']; ?></td>
                     <td><?= $dt['nilaiTopsis']; ?></td>
                     <td><?= $no; ?></td>
                     <td><?= $dt['status']; ?></td>
                     <td><?= 'Periode ' . $dt['periode']; ?></td>
+                    <td><?= $dt['tanggalTerima']; ?></td>
 
                 </tr>
             <?php endforeach; ?>

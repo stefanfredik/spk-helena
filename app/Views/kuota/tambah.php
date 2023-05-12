@@ -52,14 +52,14 @@
                         </div>
                     </div>
 
-                    <div class="row mb-2">
+                    <!-- <div class="row mb-2">
                         <div class="col-md-4">
                             <label class="form-label">Keterangan</label>
                         </div>
                         <div class="col-md-8">
                             <textarea class="form-control" name="keterangan" id="" cols="30" rows="10"></textarea>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

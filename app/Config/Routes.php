@@ -169,7 +169,11 @@ $routes->group('kuota', static function ($router) {
 
 $routes->get("perhitungan", 'Perhitungan::index');
 $routes->get("keputusan", 'Keputusan::index');
-$routes->get("laporan", 'Laporan::index');
+
+$routes->group("laporan", static function ($router) {
+    $router->get("/", "Laporan::index");
+    $router->get("cetak", "Laporan::cetak");
+});
 
 
 $routes->get("saw", 'Saw::index');

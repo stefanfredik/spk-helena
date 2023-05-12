@@ -7,7 +7,6 @@
                 <th>Periode</th>
                 <th>Jumlah Kuota</th>
                 <th>Tanggal Terima</th>
-                <th>Keterangan</th>
                 <th>Opsi</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                     <td><?= $dt['periode']; ?></td>
                     <td><?= $dt['jumlah_kuota']; ?></td>
                     <td><?= $dt['tanggal_terima']; ?></td>
-                    <td><?= $dt['keterangan']; ?></td>
                     <td style="text-align: center" width="120px">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button onclick="remove('<?= $url; ?>', this)" class="btn btn-sm text-white btn-danger" data-id="<?= $dt['id'] ?>"><i class="bi bi-trash mr-2"></i></button>

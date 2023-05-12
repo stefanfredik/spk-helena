@@ -3,9 +3,10 @@
 <?= $this->section("content"); ?>
 <div class="row">
     <div class="col">
-        <button data-url="<?= '/' . $meta['url'] . '/tambah'; ?>" class="mb-2 btn btn-pink" onclick="add(this)"><i class="bi bi-plus-circle mx-1"></i>Tambah Data</button>
-        <button data-url="<?= '/' . $meta['url'] . '/upload'; ?>" class="mb-2 btn btn-purple" onclick="add(this)"><i class="bi bi-upload mx-1"></i><span>Upload Excel</span></button>
-
+        <?php if (in_groups("admin")) : ?>
+            <button data-url="<?= '/' . $meta['url'] . '/tambah'; ?>" class="mb-2 btn btn-pink" onclick="add(this)"><i class="bi bi-plus-circle mx-1"></i>Tambah Data</button>
+            <button data-url="<?= '/' . $meta['url'] . '/upload'; ?>" class="mb-2 btn btn-purple" onclick="add(this)"><i class="bi bi-upload mx-1"></i><span>Upload Excel</span></button>
+        <?php endif; ?>
         <div class="card border shadow">
             <div class="card-header">
                 <h3><?= $title; ?></h3>
