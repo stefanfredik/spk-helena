@@ -70,12 +70,12 @@
                 <img width="60px" src="<?= $renderLogo; ?>" alt="">
             </div>
         </div>
+
         <hr>
 
         <div>
-
             <p style="text-align: right;"><?php echo "Boleng, " . date('d-m-Y'); ?></p>
-            <h3 class="head"><?= $title; ?></h3>
+            <h3 class="head"><?= "DAFTAR SISWA PENERIMA BANTUAN BEASISWA MISKIN (BSM) TAHAP 1&2 TAHUN 2021"; ?></h3>
         </div>
 
 

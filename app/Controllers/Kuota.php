@@ -13,7 +13,7 @@ class Kuota extends BaseController
     var $meta = [
         'url' => 'kuota',
         'title' => 'Tahap Beasiswa',
-        'subtitle' => 'Data Tahap dan Jumlah Kuota Peserta Bantuan'
+        'subtitle' => 'Tahap Beasiswa'
     ];
 
     public function __construct()
@@ -25,7 +25,7 @@ class Kuota extends BaseController
     {
         $data = [
             'meta' => $this->meta,
-            'title' => 'Tahap dan Jumlah Kuota Peserta Bantuan'
+            'title' => 'Tahap Beasiswa'
         ];
 
         return view("kuota/index", $data);
@@ -34,7 +34,7 @@ class Kuota extends BaseController
     public function table()
     {
         $data = [
-            'title' => 'Tahap dan Jumlah Kuota Bantuan',
+            'title' => 'Tahap Beasiswa',
             'url'   => $this->meta['url'],
             'dataKuota' => $this->kuotaModel->findAll()
         ];
@@ -45,7 +45,7 @@ class Kuota extends BaseController
     public function tambah()
     {
         $data = [
-            'title' => 'Tambah Tahap dan Jumlah Kuota Bantuan',
+            'title' => 'Tahap Beasiswa',
             'url'   => $this->meta['url']
         ];
 
@@ -55,7 +55,7 @@ class Kuota extends BaseController
     public function edit($id)
     {
         $data = [
-            'title' => 'Edit Tahap dan Jumlah Kuota Bantuan',
+            'title' => 'Tahap Beasiswa',
             'kuota'  => $this->kuotaModel->find($id),
             'meta'      => $this->meta
         ];
