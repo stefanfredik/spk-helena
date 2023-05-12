@@ -86,9 +86,9 @@
             </div>
 
             <div>
-                <p style="font-weight: bold; margin: 0;">( ------------------------------------- )</p>
+                <p style="font-weight: bold; margin: 0;">( Marselinus Viktor Do.S.Pd )</p>
                 <!-- <p style="margin: 0;">Pembi</p> -->
-                <p style="margin: 0;">NIP. </p>
+                <p style="margin: 0;">NIP. 19761013 201001 1104</p>
             </div>
         </div>
     </div>

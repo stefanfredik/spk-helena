@@ -22,7 +22,7 @@
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
                                             <th>Keputusan</th>
-                                            <th>Periode</th>
+                                            <th>Tahap</th>
                                             <th>Tanggal Terima Bantuan</th>
                                         </tr>
                                     </thead>
@@ -72,7 +72,7 @@
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
                                             <th>Keputusan</th>
-                                            <th>Periode</th>
+                                            <th>Tahap</th>
                                             <th>Tanggal Terima Bantuan</th>
                                         </tr>
                                     </thead>

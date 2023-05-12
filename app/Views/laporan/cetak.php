@@ -16,7 +16,7 @@
             <th class="text-center">Nilai Topsis</th>
             <th class="text-center">Rangking</th>
             <th class="text-center">Status</th>
-            <th class="text-center">Periode</th>
+            <th class="text-center">Tahap</th>
             <th class="text-center">Tanggal Terima</th>
         </tr>
     </thead>
