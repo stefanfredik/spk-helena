@@ -23,12 +23,12 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Periode</label>
+                            <label class="form-label">Tahap</label>
                         </div>
                         <div class="col-md-8">
                             <select class="form-control" name="periode" id="">
                                 <?php for ($i = 1; $i <= 5; $i++) :   ?>
-                                    <option value="<?= $i; ?>">Periode <?= $i; ?></option>
+                                    <option value="<?= $i; ?>">Tahap <?= $i; ?></option>
                                 <?php endfor; ?>
                             </select>
                         </div>
@@ -36,7 +36,7 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Jumlah Kuota</label>
+                            <label class="form-label">Jumlah Peserta</label>
                         </div>
                         <div class="col-md-8">
                             <input name="jumlah_kuota" type="number" class="form-control" required>

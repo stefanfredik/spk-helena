@@ -12,8 +12,8 @@ class Kuota extends BaseController
 
     var $meta = [
         'url' => 'kuota',
-        'title' => 'Tahap dan Jumlah Kuota Bantuan',
-        'subtitle' => 'Data Tahap dan Jumlah Kuota Bantuan'
+        'title' => 'Tahap Beasiswa',
+        'subtitle' => 'Data Tahap dan Jumlah Kuota Peserta Bantuan'
     ];
 
     public function __construct()
@@ -25,7 +25,7 @@ class Kuota extends BaseController
     {
         $data = [
             'meta' => $this->meta,
-            'title' => 'Tahap dan Jumlah Kuota Bantuan'
+            'title' => 'Tahap dan Jumlah Kuota Peserta Bantuan'
         ];
 
         return view("kuota/index", $data);

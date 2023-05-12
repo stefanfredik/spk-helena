@@ -4,8 +4,8 @@
             <tr>
                 <th>No</th>
                 <th>Tahun</th>
-                <th>Periode</th>
-                <th>Jumlah Kuota</th>
+                <th>Tahap</th>
+                <th>Jumlah Peserta</th>
                 <th>Tanggal Terima</th>
                 <th>Opsi</th>
             </tr>
@@ -17,7 +17,7 @@
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dt['tahun']; ?></td>
-                    <td><?= $dt['periode']; ?></td>
+                    <td>Tahap <?= $dt['periode']; ?></td>
                     <td><?= $dt['jumlah_kuota']; ?></td>
                     <td><?= $dt['tanggal_terima']; ?></td>
                     <td style="text-align: center" width="120px">

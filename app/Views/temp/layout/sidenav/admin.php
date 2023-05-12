@@ -54,7 +54,7 @@
 
     <a class="nav-link" href="/kuota">
         <div class="nav-link-icon"><i data-feather="percent"></i></div>
-        Tahap dan Jumlah Kuota
+        Tahap Beasiswa
     </a>
     <a class="nav-link" href="/perhitungan">
         <div class="nav-link-icon"><i data-feather="percent"></i></div>
