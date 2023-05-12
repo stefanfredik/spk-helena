@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\SiswaModel;
 use CodeIgniter\API\ResponseTrait;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+
 
 class Datasiswa extends BaseController
 {
@@ -84,7 +84,7 @@ class Datasiswa extends BaseController
     public function detail($id)
     {
         $data = [
-            'title' => 'Detail Data Penduduk',
+            'title' => 'Detail Data Siswa',
             'siswa'  => $this->siswaModel->find($id),
             'meta'   => $this->meta
         ];

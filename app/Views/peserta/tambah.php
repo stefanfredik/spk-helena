@@ -25,13 +25,13 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Penduduk</label>
+                            <label class="form-label">Siswa</label>
                         </div>
 
 
                         <div class="col-md-8">
                             <select class="" name="id_siswa" id="nama" required>
-                                <option value="">Pilih Siswa</option>
+                                <option value="">Pilih Siswa yang belum jadi Peserta.</option>
                                 <?php foreach ($dataSiswa as $dt) : ?>
                                     <option value="<?= $dt['id']; ?>"><?= $dt['nama_lengkap']; ?></option>
                                 <?php endforeach; ?>
