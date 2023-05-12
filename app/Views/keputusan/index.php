@@ -38,7 +38,7 @@
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
                                                 <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
-                                                <td><?= 'Periode ' . $ps['periode']; ?></td>
+                                                <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -88,7 +88,7 @@
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
                                                 <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
-                                                <td><?= $ps['periode']; ?></td>
+                                                <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>

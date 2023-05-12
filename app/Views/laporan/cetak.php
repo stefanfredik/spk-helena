@@ -22,7 +22,6 @@
     </thead>
     <tbody>
         <?php $no = 0;
-
         foreach ($peserta as $dt) : ?>
             <tr>
                 <td class="text-center"><?= ++$no; ?></td>
