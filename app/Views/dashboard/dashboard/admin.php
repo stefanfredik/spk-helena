@@ -52,7 +52,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xl-6 mb-4">
+    <div class="col-xl-4 mb-4">
         <!-- Dashboard example card 1-->
         <a class="card bg-indigo lift h-100" href="/kriteria">
             <div class="card-body d-flex justify-content-center flex-column">
@@ -68,7 +68,7 @@
             </div>
         </a>
     </div>
-    <div class="col-xl-6 mb-4">
+    <div class="col-xl-4 mb-4">
         <!-- Dashboard example card 2-->
         <a class="card bg-pink lift h-100" href="/subkriteria">
             <div class="card-body d-flex justify-content-center flex-column">
@@ -79,6 +79,24 @@
                         <div class="text-white small">Data subkriteria</div>
                     </div>
                     <i class="text-white bi bi-clipboard-pulse fa-5x"></i>
+                    <!-- <img src="/sbadmin/assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" /> -->
+
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-xl-4 mb-4">
+        <!-- Dashboard example card 2-->
+        <a class="card bg-cyan lift h-100" href="/kuota">
+            <div class="card-body d-flex justify-content-center flex-column">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="me-3">
+                        <i class="bi bi-list-ul text-white fa-2x"></i>
+                        <h5 class="text-white">Tahap Beasiswa</h5>
+                        <div class="text-white small">Data Tahap Beasiswa</div>
+                    </div>
+                    <i class="bi bi-list-ol fa-5x text-white"></i>
                     <!-- <img src="/sbadmin/assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" /> -->
 
                 </div>

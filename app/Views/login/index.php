@@ -14,11 +14,10 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
                             <!-- Social login form-->
-                            <div class="card my-5">
-                                <div class="card-body p-5 text-center">
+                            <div class="card my-3">
+                                <div class="card-body p-3 text-center">
                                     <img width="100" class="img-fluid mb-2" src="/assets/img/logo.png" alt="">
                                     <div class="h3 fw-light mb-3">Login</div>
-                                    <div>Silahkan login menggunakan akun yang sudah terdaftar.</div>
                                 </div>
                                 <hr class="my-0" />
                                 <div class="card-body p-5">

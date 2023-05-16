@@ -51,7 +51,7 @@ class Keputusan extends BaseController
         $topsis->setRangking();
 
         $sawPeserta     = $saw->getAllPeserta();
-        $topsisPeserta  = $saw->getAllPeserta();
+        $topsisPeserta  = $topsis->getAllPeserta();
         $dataKuota      = $this->kuotaModel->findAll();
 
         $data = [

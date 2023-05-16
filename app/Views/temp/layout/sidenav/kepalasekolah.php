@@ -27,25 +27,6 @@
         Data Siswa
     </a>
 
-    <hr class="hr">
-
-    <a class="nav-link" href="/datapeserta">
-        <div class="nav-link-icon"><i data-feather="file-text"></i></div>
-        Data Peserta
-    </a>
-
-    <div class="sidenav-menu-heading">Pengelolahan</div>
-
-    <a class="nav-link" href="/perhitungan">
-        <div class="nav-link-icon"><i data-feather="percent"></i></div>
-        Data Perhitungan
-    </a>
-
-    <a class="nav-link" href="/keputusan">
-        <div class="nav-link-icon"><i data-feather="percent"></i></div>
-        Data Keputusan
-    </a>
-
     <div class="sidenav-menu-heading">Laporan</div>
     <a class="nav-link" href="/laporan">
         <div class="nav-link-icon"><i data-feather="hard-drive"></i></div>
