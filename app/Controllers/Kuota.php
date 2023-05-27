@@ -6,35 +6,31 @@ use App\Controllers\BaseController;
 use App\Models\KuotaModel;
 use CodeIgniter\API\ResponseTrait;
 
-class Kuota extends BaseController
-{
+class Kuota extends BaseController {
     use ResponseTrait;
 
     var $meta = [
         'url' => 'kuota',
-        'title' => 'Tahap Beasiswa',
-        'subtitle' => 'Tahap Beasiswa'
+        'title' => 'Tahap BSM',
+        'subtitle' => 'Tahap BSM'
     ];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->kuotaModel = new KuotaModel();
     }
 
-    public function index()
-    {
+    public function index() {
         $data = [
             'meta' => $this->meta,
-            'title' => 'Tahap Beasiswa'
+            'title' => 'Tahap BSM'
         ];
 
         return view("kuota/index", $data);
     }
 
-    public function table()
-    {
+    public function table() {
         $data = [
-            'title' => 'Tahap Beasiswa',
+            'title' => 'Tahap BSM',
             'url'   => $this->meta['url'],
             'dataKuota' => $this->kuotaModel->findAll()
         ];
@@ -42,20 +38,18 @@ class Kuota extends BaseController
         return view('/kuota/table', $data);
     }
 
-    public function tambah()
-    {
+    public function tambah() {
         $data = [
-            'title' => 'Tahap Beasiswa',
+            'title' => 'Tambah Tahap BSM',
             'url'   => $this->meta['url']
         ];
 
         return view('/kuota/tambah', $data);
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         $data = [
-            'title' => 'Tahap Beasiswa',
+            'title' => 'Tahap BSM',
             'kuota'  => $this->kuotaModel->find($id),
             'meta'      => $this->meta
         ];
@@ -64,8 +58,7 @@ class Kuota extends BaseController
     }
 
 
-    public function store()
-    {
+    public function store() {
         $data = $this->request->getPost();
         $this->kuotaModel->save($data);
 
@@ -79,8 +72,7 @@ class Kuota extends BaseController
     }
 
 
-    public function update($id)
-    {
+    public function update($id) {
         $data = $this->request->getPost();
         $this->kuotaModel->update($id, $data);
 
@@ -93,8 +85,7 @@ class Kuota extends BaseController
         return $this->respond($res, 200);
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
         $this->kuotaModel->delete($id);
 
         $res = [

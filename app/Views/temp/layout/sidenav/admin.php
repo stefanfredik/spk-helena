@@ -54,7 +54,7 @@
 
     <a class="nav-link" href="/kuota">
         <div class="nav-link-icon"><i data-feather="percent"></i></div>
-        Tahap Beasiswa
+        Tahap BSM
     </a>
     <a class="nav-link" href="/perhitungan">
         <div class="nav-link-icon"><i data-feather="percent"></i></div>

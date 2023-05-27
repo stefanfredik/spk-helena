@@ -11,24 +11,21 @@ use App\Models\PesertaModel;
 use App\Models\SubkriteriaModel;
 use Dompdf\Dompdf;
 
-class Laporan extends BaseController
-{
+class Laporan extends BaseController {
     var $meta = [
         'url' => 'laporan',
         'title' => 'Laporan',
         'subtitle' => 'Halaman Laporan'
     ];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->kriteriaModel = new KriteriaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
         $this->kuotaModel = new KuotaModel();
         $this->pesertaModel = new PesertaModel();
     }
 
-    public function index()
-    {
+    public function index() {
         $data = [
             'title' => $this->meta['title'],
             'dataKriteria' => $this->kriteriaModel->findAll(),
@@ -39,15 +36,13 @@ class Laporan extends BaseController
         return view('/laporan/index', $data);
     }
 
-    public function cetak()
-    {
+    public function cetak() {
         $data['peserta'] = $this->data();
         $data["title"] = 'LAPORAN ' . APP_DESC;
         $this->pdf($data, "laporan/cetak");
     }
 
-    private function data()
-    {
+    private function data() {
         $peserta = $this->pesertaModel->findAllPeserta();
         $kriteria = $this->kriteriaModel->findAll();
         $subkriteria = $this->subkriteriaModel->findAll();
@@ -76,8 +71,7 @@ class Laporan extends BaseController
         return $data;
     }
 
-    private function statusKeputusan($dataPeserta, $dataKuota)
-    {
+    private function statusKeputusan($dataPeserta, $dataKuota) {
         $kuotaTahun = [];
 
         foreach ($dataKuota as $row) {
@@ -100,7 +94,7 @@ class Laporan extends BaseController
                 if ($tahun == $ku['tahun'] && $rangking <= $kuotaTahun[$tahun]) {
                     $kuotaPeriode += $ku['jumlah_kuota'];
 
-                    $dataPeserta[$key]['status'] = 'Mendapatkan Bantuan';
+                    $dataPeserta[$key]['status'] = 'Menerima beasiswa BSM';
                     if ($rangking <= $kuotaPeriode) {
                         $dataPeserta[$key]['periode'] = $ku['periode'];
                         $dataPeserta[$key]['tanggalTerima'] = $ku['tanggal_terima'];
@@ -109,7 +103,7 @@ class Laporan extends BaseController
                 } else {
                     $dataPeserta[$key]['periode'] = 'Tidak Tersedia';
                     $dataPeserta[$key]['tanggalTerima'] = 'Tidak Tersedia';
-                    $dataPeserta[$key]['status'] = 'Tidak Mendapatkan Bantuan';
+                    $dataPeserta[$key]['status'] = 'Tidak menerima beasiswa';
                 }
             }
         }
@@ -117,8 +111,7 @@ class Laporan extends BaseController
         return $dataPeserta;
     }
 
-    private function pdf(array $data, String $view)
-    {
+    private function pdf(array $data, String $view) {
         $pdf = new Dompdf(array('DOMPDF_ENABLE_REMOTE' => true));
 
         $html = view($view, $data);

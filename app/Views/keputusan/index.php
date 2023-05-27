@@ -13,7 +13,7 @@
                         </div>
                         <div id="data" class="card-body">
                             <div class="table-responsive">
-                                <table id="table" class="table table-bordered" width="100%" colspacing="0">
+                                <table id="saw" class="table table-bordered" width="100%" colspacing="0">
                                     <thead>
                                         <tr class="align-middle">
                                             <th class="text-center" width="80">Rangking</th>
@@ -22,7 +22,7 @@
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
                                             <th>Keputusan</th>
-                                            <th>Tahap</th>
+                                            <th>Tahap BSM</th>
                                             <th>Tanggal Terima Bantuan</th>
                                         </tr>
                                     </thead>
@@ -37,7 +37,7 @@
                                                 <td><?= $ps['nama_lengkap'] ?></td>
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
-                                                <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
+                                                <td><span class="badge <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
                                                 <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
                                             </tr>
@@ -63,7 +63,7 @@
                         </div>
                         <div id="data" class="card-body">
                             <div class="table-responsive">
-                                <table id="table" class="table table-bordered" width="100%" colspacing="0">
+                                <table id="topsis" class="table table-bordered" width="100%" colspacing="0">
                                     <thead>
                                         <tr class="align-middle">
                                             <th class="text-center" width="80">Rangking</th>
@@ -72,7 +72,7 @@
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
                                             <th>Keputusan</th>
-                                            <th>Tahap</th>
+                                            <th>Tahap BSM</th>
                                             <th>Tanggal Terima Bantuan</th>
                                         </tr>
                                     </thead>
@@ -87,7 +87,7 @@
                                                 <td><?= $ps['nama_lengkap'] ?></td>
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
-                                                <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
+                                                <td><span class="badge <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
                                                 <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
                                             </tr>
@@ -104,3 +104,29 @@
 </div>
 
 <?= $this->endSection(); ?>
+
+<?= $this->section("script") ?>
+<script>
+    const config = {
+        columnDefs: [{
+            width: 20,
+            targets: 0
+        }],
+        language: {
+            paginate: {
+                first: "Awal",
+                last: "Akhir",
+                next: ' <i class="bi bi-arrow-right-circle"></i>',
+                previous: '<i class="bi bi-arrow-left-circle"></i>'
+            },
+            zeroRecords: "Belum ada data.",
+            search: "Cari:",
+            lengthMenu: "Tampil _MENU_ kolom",
+            info: "Kolom _START_ sampai _END_ dari _TOTAL_ kolom"
+        }
+    };
+
+    $('#saw').DataTable(config)
+    $('#topsis').DataTable(config)
+</script>
+<?= $this->endSection() ?>

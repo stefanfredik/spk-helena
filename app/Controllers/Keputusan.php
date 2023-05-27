@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Libraries\Moora;
 use App\Libraries\SawLib;
 use App\Libraries\TopsisLib;
 use App\Models\KelayakanModel;
@@ -13,33 +12,28 @@ use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
 
-class Keputusan extends BaseController
-{
+class Keputusan extends BaseController {
     var $meta = [
         'url' => 'keputusan',
         'title' => 'Data Keputusan',
         'subtitle' => 'Halaman Keputusan'
     ];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->kriteriaModel    = new KriteriaModel();
         $this->siswaModel       = new SiswaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
         $this->pesertaModel     = new PesertaModel();
-        $this->kelayakanModel   = new KelayakanModel();
         $this->kuotaModel       = new KuotaModel();
     }
 
-    public function index()
-    {
+    public function index() {
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
-        $kelayakan      = $this->kelayakanModel->findAll();
 
         helper('Check');
-        $check = checkdata($peserta, $kriteria, $subkriteria, $kelayakan);
+        $check = checkdata($peserta, $kriteria, $subkriteria);
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
         $saw = new SawLib($peserta, $kriteria, $subkriteria);
@@ -59,14 +53,12 @@ class Keputusan extends BaseController
             'url'               => $this->meta['url'],
             'sawPeserta'        => $this->statusKeputusan($sawPeserta, $dataKuota),
             'topsisPeserta'     => $this->statusKeputusan($topsisPeserta, $dataKuota),
-            'kelayakan'         => $kelayakan
         ];
 
         return view('/keputusan/index', $data);
     }
 
-    private function statusKeputusan($dataPeserta, $dataKuota)
-    {
+    private function statusKeputusan($dataPeserta, $dataKuota) {
         // hitung kuota tahunan
         $kuotaTahun = [];
         foreach ($dataKuota as $row) {
@@ -90,7 +82,7 @@ class Keputusan extends BaseController
                 if ($tahun == $ku['tahun'] && $rangking <= $kuotaTahun[$tahun]) {
                     $kuotaPeriode += $ku['jumlah_kuota'];
 
-                    $dataPeserta[$key]['status'] = 'Mendapatkan Bantuan';
+                    $dataPeserta[$key]['status'] = 'Menerima beasiswa BSM';
                     if ($rangking <= $kuotaPeriode) {
                         $dataPeserta[$key]['periode'] = $ku['periode'];
                         $dataPeserta[$key]['tanggalTerima'] = $ku['tanggal_terima'];
@@ -99,7 +91,7 @@ class Keputusan extends BaseController
                 } else {
                     $dataPeserta[$key]['periode'] = 'Tidak Tersedia';
                     $dataPeserta[$key]['tanggalTerima'] = 'Tidak Tersedia';
-                    $dataPeserta[$key]['status'] = 'Tidak Mendapatkan Bantuan';
+                    $dataPeserta[$key]['status'] = 'Tidak menerima beasiswa.';
                 }
             }
         }

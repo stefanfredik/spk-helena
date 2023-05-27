@@ -1,7 +1,7 @@
 <?php
 
 
-function checkdata($peserta, $kriteria, $subkriteria, $kelayakan) {
+function checkdata($peserta, $kriteria, $subkriteria) {
     $err = [];
 
     if ($kriteria == null) {
@@ -12,9 +12,6 @@ function checkdata($peserta, $kriteria, $subkriteria, $kelayakan) {
         array_push($err, 'Data Subkriteria Masih Kosong');
     }
 
-    if ($kelayakan == null) {
-        array_push($err, 'Data Kelayakan Masih Kosong');
-    }
 
     if ($peserta == null) {
         array_push($err, 'Data Peserta Masih Kosong');

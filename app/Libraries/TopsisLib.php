@@ -2,8 +2,7 @@
 
 namespace App\Libraries;
 
-class TopsisLib
-{
+class TopsisLib {
     private $dataAkhir = [];
     public $bobotKriteria = [];
     public $aPlus = [];
@@ -11,8 +10,7 @@ class TopsisLib
 
 
 
-    public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria)
-    {
+    public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria) {
         $this->setDataInfo();
         $this->hitungBobotKriteria();
         $this->setNilai();
@@ -27,8 +25,7 @@ class TopsisLib
     }
 
     // Hitung bobot kriteria
-    private function hitungBobotKriteria()
-    {
+    private function hitungBobotKriteria() {
         $totalNilaiKriteria = 0;
 
         foreach ($this->dataKriteria as $dk) {
@@ -41,15 +38,13 @@ class TopsisLib
     }
 
 
-    private function setDataInfo()
-    {
+    private function setDataInfo() {
         foreach ($this->dataPeserta as $key => $ps) {
             $this->dataAkhir[$key] = $ps;
         }
     }
 
-    private function setNilai()
-    {
+    private function setNilai() {
         foreach ($this->dataPeserta as $key => $ps) {
             foreach ($this->dataKriteria as $dk) {
                 $k = 'k_' . $dk['id'];
@@ -67,8 +62,7 @@ class TopsisLib
         }
     }
 
-    private function normalisasi()
-    {
+    private function normalisasi() {
         $kriteria = [];
         // menampung nilai kriteria dari setiap peserta
         foreach ($this->dataKriteria as $dk) {
@@ -90,8 +84,7 @@ class TopsisLib
 
 
 
-    private function hitungNormalisasiTerbobot()
-    {
+    private function hitungNormalisasiTerbobot() {
         foreach ($this->dataAkhir as $key =>  $da) {
             foreach ($this->dataKriteria as $dk) {
                 $this->dataAkhir[$key]["normalisasiTerbobot"][$dk["keterangan"]] =  $this->bobotKriteria[$dk["keterangan"]] * $da['normalisasi'][$dk["keterangan"]];
@@ -99,8 +92,7 @@ class TopsisLib
         }
     }
 
-    private function hitungAplus()
-    {
+    private function hitungAplus() {
         foreach ($this->dataKriteria as $dk) {
             $tempMax[$dk["keterangan"]] = [];
 
@@ -112,8 +104,7 @@ class TopsisLib
         }
     }
 
-    private function hitungAminus()
-    {
+    private function hitungAminus() {
         foreach ($this->dataKriteria as $dk) {
             $tempMax[$dk["keterangan"]] = [];
 
@@ -126,8 +117,7 @@ class TopsisLib
     }
 
 
-    private function hitungSolusiIdealPositive()
-    {
+    private function hitungSolusiIdealPositive() {
 
         foreach ($this->dataAkhir as $key => $da) {
             $temp = 0;
@@ -140,8 +130,7 @@ class TopsisLib
     }
 
 
-    private function hitungSolusiIdealNegative()
-    {
+    private function hitungSolusiIdealNegative() {
 
         foreach ($this->dataAkhir as $key => $da) {
             $temp = 0;
@@ -154,27 +143,27 @@ class TopsisLib
     }
 
 
-    private function hitungNilaiAkhir()
-    {
+    private function hitungNilaiAkhir() {
         foreach ($this->dataAkhir as $key => $da) {
-            $this->dataAkhir[$key]['nilaiAkhir'] = number_format($da["idealNegative"] / ($da['idealNegative'] + $da['idealPositive']), 3);
+            if ($da["idealNegative"] == 0 || $da["idealPositive"] == 0) {
+                $this->dataAkhir[$key]['nilaiAkhir'] = 0;
+            } else {
+                $this->dataAkhir[$key]['nilaiAkhir'] = number_format($da["idealNegative"] / ($da['idealNegative'] + $da['idealPositive']), 3);
+            }
         }
     }
 
-    public function sortPeserta()
-    {
+    public function sortPeserta() {
         usort($this->dataAkhir, fn ($a, $b) => $b['nilaiAkhir'] <=> $a['nilaiAkhir']);
         return $this;
     }
 
 
-    public function getAllPeserta()
-    {
+    public function getAllPeserta() {
         return $this->dataAkhir;
     }
 
-    public function setRangking()
-    {
+    public function setRangking() {
         foreach ($this->dataAkhir as $key => $da) {
             $this->dataAkhir[$key]['rangking'] = $key + 1;
             $this->dataAkhir[$key]['periode'] = "";
@@ -184,8 +173,7 @@ class TopsisLib
 
 
     // helper function
-    private function hitungNormalisasi(float $bobot, array $semuabobot): float
-    {
+    private function hitungNormalisasi(float $bobot, array $semuabobot): float {
         $nilai = 0;
         if ($bobot == 0) {
             return 0;

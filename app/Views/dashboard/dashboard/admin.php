@@ -93,8 +93,8 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="me-3">
                         <i class="bi bi-list-ul text-white fa-2x"></i>
-                        <h5 class="text-white">Tahap Beasiswa</h5>
-                        <div class="text-white small">Data Tahap Beasiswa</div>
+                        <h5 class="text-white"> Tahap BSM</h5>
+                        <div class="text-white small">Tahap BSM</div>
                     </div>
                     <i class="bi bi-list-ol fa-5x text-white"></i>
                     <!-- <img src="/sbadmin/assets/img/illustrations/processing.svg" alt="..." style="width: 8rem" /> -->
