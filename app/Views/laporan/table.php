@@ -13,6 +13,7 @@
                 <th class="text-center">Nilai SAW</th>
                 <th class="text-center">Nilai Topsis</th>
                 <th class="text-center">Rangking</th>
+                <th class="text-center">Kelayakan</th>
                 <th class="text-center">Status</th>
                 <th class="text-center">Periode</th>
                 <th class="text-center">Tanggal Terima</th>
@@ -34,6 +35,7 @@
                     <td><?= $dt['nilaiSaw']; ?></td>
                     <td><?= $dt['nilaiTopsis']; ?></td>
                     <td><?= $no; ?></td>
+                    <td> <?= $dt['status'] == 'Menerima beasiswa BSM' ? 'Layak' : 'Tidak Layak'; ?></td>
                     <td><?= $dt['status']; ?></td>
                     <td><?= 'Periode ' . $dt['periode']; ?></td>
                     <td><?= $dt['tanggalTerima']; ?></td>

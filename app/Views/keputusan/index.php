@@ -21,6 +21,7 @@
                                             <th>Nama Lengkap</th>
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
+                                            <th>Kelayakan</th>
                                             <th>Keputusan</th>
                                             <th>Tahap BSM</th>
                                             <th>Tanggal Terima Bantuan</th>
@@ -37,6 +38,7 @@
                                                 <td><?= $ps['nama_lengkap'] ?></td>
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
+                                                <td> <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'Layak' : 'Tidak Layak'; ?></td>
                                                 <td><span class="badge <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
                                                 <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
@@ -71,6 +73,7 @@
                                             <th>Nama Lengkap</th>
                                             <th>Kelas</td>
                                             <th>Nilai Akhir</td>
+                                            <th>Kelayakan</th>
                                             <th>Keputusan</th>
                                             <th>Tahap BSM</th>
                                             <th>Tanggal Terima Bantuan</th>
@@ -87,6 +90,7 @@
                                                 <td><?= $ps['nama_lengkap'] ?></td>
                                                 <td><?= $ps['kelas'] ?></td>
                                                 <td><?= $ps['nilaiAkhir']; ?></td>
+                                                <td> <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'Layak' : 'Tidak Layak'; ?></td>
                                                 <td><span class="badge <?= $ps['status'] == 'Menerima beasiswa BSM' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
                                                 <td><?= 'Tahap ' . $ps['periode']; ?></td>
                                                 <td><?= $ps['tanggalTerima']; ?></td>
