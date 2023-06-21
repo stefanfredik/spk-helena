@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class KuotaModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kuota';
+    protected $table            = 'tahap_bsm';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
