@@ -22,6 +22,7 @@
     </thead>
     <tbody>
         <?php $no = 0;
+        // dd($dataPeserta);
         foreach ($peserta as $dt) : ?>
             <tr>
                 <td class="text-center"><?= ++$no; ?></td>
@@ -35,9 +36,10 @@
                 <td><?= $dt['nilaiSaw']; ?></td>
                 <td><?= $dt['nilaiTopsis']; ?></td>
                 <td><?= $no; ?></td>
-                <td><?= $dt['status']; ?></td>
+                <td> <?= $dt['status'] == 'Menerima beasiswa BSM' ? 'Layak' : 'Tidak Layak'; ?></td>
                 <td><?= 'Periode ' . $dt['periode']; ?></td>
                 <td><?= $dt['tanggalTerima']; ?></td>
+
             </tr>
         <?php endforeach; ?>
     </tbody>
